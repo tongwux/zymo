@@ -1,0 +1,109 @@
+.success-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6f4ea;
+  border-radius: 50%;
+}
+
+.success-icon svg {
+  width: 40px;
+  height: 40px;
+  color: #00843D;
+}
+
+.success-container h1 {
+  color: #2d3748;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.success-container p {
+  color: #718096;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.success-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.primary-button {
+  padding: 12px 24px;
+  background: #00843D;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary-button:hover {
+  background: #006e33;
+}
+
+.secondary-button {
+  padding: 12px 24px;
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.secondary-button:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.secondary-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 640px) {
+  .success-container {
+    margin: 20px;
+    padding: 24px;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .success-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+} 
