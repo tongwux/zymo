@@ -1,21 +1,16 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import { FiCheckCircle, FiHome, FiFolder } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import './OrderSuccess.css';
 
 const OrderSuccess = () => {
   const navigate = useNavigate();
-  const [notifications] = React.useState([
-    { id: 1, message: 'Order placed successfully', type: 'success' },
-  ]);
 
   return (
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
           <div className="service-detail">
             <div className="service-header">
@@ -45,7 +40,7 @@ const OrderSuccess = () => {
                 </button>
                 <button 
                   className="secondary-button"
-                  onClick={() => navigate('/projects')}
+                  onClick={() => navigate('/ongoing-projects')}
                 >
                   <FiFolder /> View Project
                 </button>

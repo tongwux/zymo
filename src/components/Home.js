@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import { FiHome } from 'react-icons/fi';
 import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [notifications] = React.useState([
-    { id: 1, message: 'Welcome to ZYMO', type: 'success' },
-  ]);
 
   useEffect(() => {
     // Redirect to dashboard after a short delay
@@ -24,7 +20,6 @@ const Home = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
           <div className="service-detail">
             <div className="service-header">

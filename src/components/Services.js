@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { 
-  FiCode, 
-  FiSmartphone, 
-  FiLayout, 
+  FiActivity, 
   FiDatabase, 
-  FiCloud, 
-  FiShield 
+  FiBarChart2, 
+  FiCode, 
+  FiBookOpen,
+  FiSettings,
+  FiSearch,
+  FiFilter,
+  FiShoppingCart,
+  FiInfo
 } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import './Services.css';
 
 const Services = () => {
@@ -24,79 +27,97 @@ const Services = () => {
     {
       id: 1,
       title: '16S/ITS Amplicon Sequencing',
-      icon: <FiCode />,
-      color: '#4CAF50',
-      description: 'Comprehensive 16S/ITS amplicon sequencing services with bioinformatics analysis.'
+      icon: <FiActivity />,
+      color: '#00843D',
+      description: 'Comprehensive analysis of microbial communities using targeted sequencing of 16S rRNA and ITS regions.',
+      route: '/services/amplicon-sequencing'
     },
     {
       id: 2,
-      title: 'Mobile Development',
-      description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
-      icon: <FiSmartphone />,
-      color: '#2196F3'
+      title: 'Full-Length 16S Sequencing',
+      icon: <FiDatabase />,
+      color: '#00843D',
+      description: 'High-resolution taxonomic profiling with complete 16S rRNA gene sequencing for detailed microbial identification.',
+      route: '/services/full-length-16s'
     },
     {
       id: 3,
-      title: 'UI/UX Design',
-      description: 'User-centered design solutions that create engaging and intuitive experiences.',
-      icon: <FiLayout />,
-      color: '#9C27B0'
+      title: 'Shotgun Metagenomic Sequencing',
+      icon: <FiBarChart2 />,
+      color: '#00843D',
+      description: 'Comprehensive analysis of entire microbial communities, including functional potential and taxonomic composition.',
+      route: '/services/shotgun-metagenomic'
     },
     {
       id: 4,
-      title: 'Database Solutions',
-      description: 'Efficient database design and optimization for better performance and scalability.',
-      icon: <FiDatabase />,
-      color: '#FF9800'
+      title: 'Metatranscriptomic Sequencing',
+      icon: <FiCode />,
+      color: '#00843D',
+      description: 'Analysis of active gene expression in microbial communities to understand functional activity.',
+      route: '/services/metatranscriptomic'
     },
     {
       id: 5,
-      title: 'Cloud Services',
-      description: 'Cloud infrastructure setup and management for reliable and scalable solutions.',
-      icon: <FiCloud />,
-      color: '#00BCD4'
+      title: 'Long-Read Metagenomic Sequencing & Assembly',
+      icon: <FiBookOpen />,
+      color: '#00843D',
+      description: 'High-quality genome assembly and analysis using long-read sequencing technology for complete microbial genomes.',
+      route: '/services/long-read-metagenomic'
     },
     {
       id: 6,
-      title: 'Security Services',
-      description: 'Comprehensive security solutions to protect your digital assets and data.',
-      icon: <FiShield />,
-      color: '#F44336'
+      title: 'Custom Service',
+      icon: <FiSettings />,
+      color: '#00843D',
+      description: 'Tailored sequencing solutions designed to meet your specific research needs and requirements.',
+      route: '/services/custom'
     }
   ];
 
-  const handleServiceClick = (serviceId) => {
-    navigate(`/services/${serviceId}`);
+  const handleServiceClick = (service) => {
+    navigate(service.route);
   };
 
   return (
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
-          <div className="services-page">
-            <div className="services-header">
-              <h1>Our Services</h1>
-              <p>Discover our comprehensive range of professional services</p>
+          <div className="service-detail">
+            <div className="service-header">
+              <div className="service-icon" style={{ color: '#00843D' }}>
+                <FiActivity />
+              </div>
+              <div className="service-info">
+                <h1>Services</h1>
+                <p>Browse and select from our range of sequencing services</p>
+              </div>
             </div>
-            <div className="services-grid">
-              {services.map((service) => (
-                <div 
-                  key={service.id} 
-                  className="service-card"
-                  onClick={() => handleServiceClick(service.id)}
-                >
-                  <div className="service-icon" style={{ color: service.color }}>
-                    {service.icon}
-                  </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <button className="service-button" style={{ backgroundColor: service.color }}>
-                    Learn More
-                  </button>
+
+            <div className="service-form-container">
+              <div className="services-page">
+                <div className="services-grid">
+                  {services.map((service) => (
+                    <div 
+                      key={service.id} 
+                      className="service-card"
+                    >
+                      <div className="service-icon" style={{ color: service.color }}>
+                        {service.icon}
+                      </div>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                      <button 
+                        className="service-button" 
+                        style={{ backgroundColor: service.color }}
+                        onClick={() => handleServiceClick(service)}
+                      >
+                        Learn More
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>

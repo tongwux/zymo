@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import { 
   FiActivity, 
   FiBell, 
@@ -10,16 +9,40 @@ import {
   FiAlertCircle,
   FiTrendingUp,
   FiTrendingDown,
-  FiHome
+  FiHome,
+  FiBarChart2,
+  FiUsers,
+  FiFileText
 } from 'react-icons/fi';
 import './Dashboard.css';
 
-const Dashboard = () => {
-  const [notifications] = useState([
-    { id: 1, message: 'New project started', type: 'success' },
-    { id: 2, message: 'Project status updated', type: 'info' },
-    { id: 3, message: 'Payment received', type: 'success' },
-  ]);
+const Dashboard = ({ addNotification }) => {
+  const notifications = [
+    {
+      id: 1,
+      message: 'Project "16S rRNA Sequencing" has been completed successfully',
+      type: 'success',
+      time: '2 hours ago'
+    },
+    {
+      id: 2,
+      message: 'New project "Metagenomic Analysis" has been assigned to you',
+      type: 'info',
+      time: '5 hours ago'
+    },
+    {
+      id: 3,
+      message: 'Sample submission deadline approaching for "ITS Sequencing" project',
+      type: 'warning',
+      time: '1 day ago'
+    },
+    {
+      id: 4,
+      message: 'Your report for "Shotgun Sequencing" is ready for review',
+      type: 'success',
+      time: '2 days ago'
+    }
+  ];
 
   // Mock project stats
   const projectStats = [
@@ -109,11 +132,45 @@ const Dashboard = () => {
     }
   ];
 
+  const stats = [
+    {
+      title: 'Active Projects',
+      value: '12',
+      icon: <FiActivity />,
+      color: '#00843D'
+    },
+    {
+      title: 'Completed Projects',
+      value: '45',
+      icon: <FiBarChart2 />,
+      color: '#00843D'
+    },
+    {
+      title: 'Team Members',
+      value: '8',
+      icon: <FiUsers />,
+      color: '#00843D'
+    },
+    {
+      title: 'Reports Generated',
+      value: '56',
+      icon: <FiFileText />,
+      color: '#00843D'
+    }
+  ];
+
+  const handleStatClick = (stat) => {
+    addNotification({
+      type: 'info',
+      message: `Viewing details for ${stat.title}`,
+      time: 'Just now'
+    });
+  };
+
   return (
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
           <div className="service-detail">
             <div className="service-header">
@@ -126,21 +183,19 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Project Stats */}
             <div className="stats-grid">
               {projectStats.map((stat, index) => (
-                <div key={index} className="stat-card">
+                <div 
+                  key={index} 
+                  className="stat-card"
+                  onClick={() => handleStatClick(stat)}
+                >
                   <div className="stat-icon" style={{ color: stat.color }}>
-                    <FiActivity />
+                    {stat.icon}
                   </div>
                   <div className="stat-info">
-                    <div className="stat-title">{stat.title}</div>
-                    <div className="stat-value" style={{ color: stat.color }}>
-                      {stat.value}
-                    </div>
-                    <div className="stat-trend" style={{ color: stat.color }}>
-                      {stat.trendIcon} {stat.trend}
-                    </div>
+                    <h3>{stat.title}</h3>
+                    <p>{stat.value}</p>
                   </div>
                 </div>
               ))}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import { 
   FiFolder, 
   FiClock, 
@@ -22,14 +21,6 @@ import './OngoingProjects.css';
 const OngoingProjects = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState(null);
-  const [notifications] = React.useState([
-    {
-      id: 1,
-      type: 'info',
-      message: 'Project ITS Sequencing is 60% complete',
-      time: '2 minutes ago'
-    }
-  ]);
 
   // Mock ongoing projects data
   const projects = [
@@ -137,7 +128,6 @@ const OngoingProjects = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
           <div className="service-detail">
             <div className="service-header">

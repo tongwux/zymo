@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
-import NotificationBar from './NotificationBar';
 import { 
   FiFolder, 
   FiCheckCircle, 
@@ -17,15 +16,6 @@ import {
 import './Dashboard.css';
 
 const CompletedProjects = () => {
-  const [notifications] = React.useState([
-    {
-      id: 1,
-      type: 'info',
-      message: 'New project report available for ITS Sequencing',
-      time: '2 minutes ago'
-    }
-  ]);
-
   const [selectedProject, setSelectedProject] = useState(null);
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
   const [projectNotes, setProjectNotes] = useState({});
@@ -120,7 +110,6 @@ const CompletedProjects = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <NotificationBar notifications={notifications} />
         <div className="dashboard-content">
           <div className="service-detail">
             <div className="service-header">
